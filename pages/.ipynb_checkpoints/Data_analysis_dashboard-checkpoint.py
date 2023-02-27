@@ -47,6 +47,14 @@ df['AGE_INT'] = le.fit_transform(df['AGE'])
 
 
 
+
+
+
+
+
+
+
+
 # Set up sidebar
 st.sidebar.title("Data Visualisation des données du Hackathon")
 
@@ -86,16 +94,54 @@ if chart_type == "Histogram":
 # Circle plot
 elif chart_type == "Circle plot":
     
-    options = list(df.keys())
-    selection = st.multiselect("Sélectionner les catégories à afficher:", options)
+    var_analy=st.selectbox('Choisissez la variable d''analyse',df.columns.tolist())
+    cat_analy=st.multiselect('Choisissez la catégorie d''analyse',df[var_analy].unique())
+    df_circleplot=df[df[var_analy].isin(cat_analy)]
+    
+    truc1 = pd.Series(df_circleplot.index, index=df_circleplot['GENRE']).groupby(level=0).size().tolist()
+    label_truc1 = df_circleplot['GENRE'].unique().tolist()
+    fig1 = go.Figure(data=[go.Pie(labels=label_truc1, 
+                                      values = truc1,
+                                      hole=.4)])
+    fig1.update_layout(
+            title_text="Répartition des GENRE", title_x =0.5)
 
-    # Créer les pie plots pour chaque catégorie sélectionnée
-    for cat in selection:
-        fig = go.Figure(df=[go.Pie(labels=list(df[cat].keys()), values=list(df[cat].values()))])
-        fig.update_traces(hoverinfo='label+value', textinfo='percent+label')
-        fig.update_layout(title=cat, width=400, height=400)
-        st.plotly_chart(fig)
+    
+    truc2 = pd.Series(df_circleplot.index, index=df_circleplot['AGE']).groupby(level=0).size().tolist()
+    label_truc2 = df_circleplot['AGE'].unique().tolist()
+    fig2 = go.Figure(data=[go.Pie(labels=label_truc2, 
+                                      values = truc2,
+                                      hole=.4)])
+    fig2.update_layout(
+            title_text="Répartition des AGE", title_x =0.5)
 
+    
+    truc3 = pd.Series(df_circleplot.index, index=df_circleplot['Je vis']).groupby(level=0).size().tolist()
+    label_truc3 = df_circleplot['Je vis'].unique().tolist()
+    fig3 = go.Figure(data=[go.Pie(labels=label_truc3, 
+                                      values = truc3,
+                                      hole=.4)])
+    fig3.update_layout(
+            title_text="Répartition des lieux de résidence", title_x =0.5)
+    
+    truc4 = pd.Series(df_circleplot.index, index=df_circleplot['Je suis.1']).groupby(level=0).size().tolist()
+    label_truc4 = df_circleplot['Je suis.1'].unique().tolist()
+    fig4 = go.Figure(data=[go.Pie(labels=label_truc4, 
+                                      values = truc4,
+                                      hole=.4)])
+    fig4.update_layout(
+            title_text="Répartition des rôles", title_x =0.5)
+
+    # Diviser la page en deux colonnes et deux rangées
+    col1, col2 = st.columns(2)
+
+    with col1:
+            st.plotly_chart(fig1)
+            st.plotly_chart(fig2)
+
+    with col2:
+            st.plotly_chart(fig3)
+            st.plotly_chart(fig4)
         
         
         
