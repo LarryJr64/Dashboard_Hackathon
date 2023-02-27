@@ -13,18 +13,7 @@ import warnings
 # Ne pas afficher les messages de warning
 warnings.filterwarnings('ignore')
 
-
-
-
-st.set_page_config(page_title="My Streamlit App")
-st.markdown("""
-<style>
-body {
-    background-color: #1E1E1E;
-    color: #FFFFFF
-}
-</style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="My Streamlit App",layout="wide" )
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
@@ -44,11 +33,6 @@ df = load_data()
 
 le = LabelEncoder()
 df['AGE_INT'] = le.fit_transform(df['AGE'])
-
-
-
-
-
 
 
 
@@ -210,3 +194,17 @@ else:
         correlation_matrix(df, selected_columns)
     else:
         st.warning("Veuillez sélectionner au moins une colonne.")
+
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.write("##")
+st.sidebar.image('https://cdn.discordapp.com/attachments/1017376281769300013/1079828396466516100/signature_unistra_fond_transparent.png',width=300)

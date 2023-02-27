@@ -3,18 +3,11 @@ import requests
 from PIL import Image
 
 
-st.set_page_config(page_title="My Streamlit App", layout="wide")
-st.markdown("""
-<style>
-body {
-    background-color: #1E1E1E;
-    color: #FFFFFF
-}
-</style>
-""", unsafe_allow_html=True)
-
+st.set_page_config(page_title="My Streamlit App")
 
 def main() : 
+     
+    st.image('https://langagevisuel.unistra.fr/fileadmin/Contenu/2.1_signature_universite/gif-image-detouree-retina.gif',width=800)
     st.title("Hackathon Dashboard")
     st.write('##')
 
@@ -47,8 +40,27 @@ def main() :
         """
         )
 
-    st.write("##") 
-    st.image('https://mir-s3-cdn-cf.behance.net/project_modules/fs/bc90cc81411939.5d2f90e336b69.gif',width=1000)
+    st.write("##")
+    
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.write("##")
+    st.sidebar.image('https://cdn.discordapp.com/attachments/1017376281769300013/1079828396466516100/signature_unistra_fond_transparent.png',width=300)
     
 if __name__ == '__main__' :
     main()
