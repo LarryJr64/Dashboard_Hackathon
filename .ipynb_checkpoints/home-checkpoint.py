@@ -3,8 +3,13 @@ import requests
 from PIL import Image
 
 
+
 #ORL = 'https://github.com/LarryJr64/sarcasm_detection_NLP/blob/main/mots-nlp.png?raw=true'
 #response = requests.get(ORL)
+
+with open("image.jpg", "wb") as f:
+    f.write(response.content)
+image = Image.open("image.jpg")
 
 def main() : 
     st.title("Sarcasm Detector")
