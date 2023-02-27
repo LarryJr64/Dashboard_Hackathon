@@ -3,16 +3,19 @@ import requests
 from PIL import Image
 
 
+st.set_page_config(page_title="My Streamlit App", layout="wide")
+st.markdown("""
+<style>
+body {
+    background-color: #1E1E1E;
+    color: #FFFFFF
+}
+</style>
+""", unsafe_allow_html=True)
 
-#ORL = 'https://github.com/LarryJr64/sarcasm_detection_NLP/blob/main/mots-nlp.png?raw=true'
-#response = requests.get(ORL)
-
-with open("image.jpg", "wb") as f:
-    f.write(response.content)
-image = Image.open("image.jpg")
 
 def main() : 
-    st.title("Sarcasm Detector")
+    st.title("Hackathon Dashboard")
     st.write('##')
 
     st.subheader("Why this project")
@@ -44,37 +47,8 @@ def main() :
         """
         )
 
-    st.write("##")
-    st.subheader("Limits") 
-    with st.container() :
-        left_column, right_column = st.columns(2)
-        with left_column :
-            st.write("##")
-            st.write(
-                """
-                Our model has 2 major limits  
-                
-                FIRST :
-                The model only works with english sentences.
-                If you try wwith an other languages the model
-                prediction is totally random.
-                    
-                SECOND :
-                As you can see the word having the 
-                most impact are a bit weird. 
-                Take nation for example, 
-                as we say TheOnion is using 
-                sarcasm to critic most of famous 
-                people and politics. 
-                This is a reason why
-                some words are tops, it is a 
-                politics sarcasm oriented. 
-                In other words our sarcasm 
-                detector is more likely a politic
-                sarcasm detector.
-                """)
-        with right_column :
-            st.image(image, width=160)
+    st.write("##") 
+    st.image('https://mir-s3-cdn-cf.behance.net/project_modules/fs/bc90cc81411939.5d2f90e336b69.gif',width=1000)
     
 if __name__ == '__main__' :
     main()
