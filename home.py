@@ -1,46 +1,70 @@
 import streamlit as st
 import requests
 from PIL import Image
-
+from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title="My Streamlit App")
+def load_lottieurl(url):
+    r = requests.get(url)
+    if r.status_code !=200:
+        return None
+    return r.json()
+lottie_h = load_lottieurl("https://assets8.lottiefiles.com/packages/lf20_49rdyysj.json")
 
 def main() : 
      
-    st.image('https://langagevisuel.unistra.fr/fileadmin/Contenu/2.1_signature_universite/gif-image-detouree-retina.gif',width=800)
-    st.title("Hackathon Dashboard")
-    st.write('##')
+    # st.image('https://langagevisuel.unistra.fr/fileadmin/Contenu/2.1_signature_universite/gif-image-detouree-retina.gif',width=800)
+    # st.title("Hackathon Dashboard")
+    # st.write('##')
+     #c'est vraiment trop moche mec, je suis dsl
 
-    st.subheader("Why this project")
+
+    st.subheader("What is this website ?")
     st.write(
         """
-        The goal of this prject was to create a tool which analyze sentences and detect
-        if the sentences is sarcastic or not using NLP (Natural Language Processing).  
+        This project is a response of a need of sociology reserachers of the university of Strasbourg. They wanted a visualisation tools to easily see what the data is all about.
+        The data that will be uploaded directly uploaded from the user's computer to the website. The data that will be uploaded by sociologists come from surveys done during different hackatons. We then created a "dynamic" tool so the reserachers can upload their excel data in it as long as it respect the initial form.
         
-        First of all, before any model creation we need data. The database come from Kaggle.
-        This dataset is filled with articles headlines of two different websites. huffingpost and theonion
-        This dataset contains two different labels, 1 for sarcastic and 0 if not sarcastic.
-        TheOnion is known to publish very sarcastic news helping us with high quality sarcastic healines.
         """
         )
     st.write(
         """
-        [here find the dataset](https://www.kaggle.com/datasets/saurabhbagchi/sarcasm-detection-through-nlp)
+        [here find the full code](https://github.com/LANEVE/Dashboard_Hackathon)
         """
         )
-    st.write("##")
+    st.write("---")
     st.subheader("How it works")   
     st.write(
         """
-        We had more or less 50/50 with sarcastic sentences and not sarcastics headlines for a total of 26.000 headlines.
-        We then cleaned the database, removed stop_words, etc... and convert all words to tokens. After getting our bag of words 
-        we vectorized it and use a logistic regression to train a model. 
+        1. Upload your excel files in the section make for. The file must be a .XLSX either it wont work? If you see a weird red error message it is because you didn't upload anything yet'
         
-        We end up having a 90% precision with this model.
+        2. Select the different vizualisation you want between histogram, circle plot, boxplot and a heatmap.
+        
+             a. the histogram is usefull to see the repartition of a varaible among your dataset
+             
+             b. circle plot gives information about gender, place of living, ages and jobs repartition among the participants. We added a filter by question. For example if you want to see what kind of profile like best a question.
+        
+             c. boxplot to observe repartition of a certain variable depending of an other
+             
+             d. heatmap to glance any correlation between variables
         """
         )
 
     st.write("##")
+    with st.container() :
+        st.write("---")
+        left_column, right_column = st.columns(2)
+        with left_column :
+            st.write("##")
+            st.write(
+                """
+                
+                
+                We hope you will find something interesting using our tools !
+        
+                """)
+        with right_column :
+            st_lottie(lottie_h, height=200, key="morty")
     
     st.sidebar.write("##")
     st.sidebar.write("##")
