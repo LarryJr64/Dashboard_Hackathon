@@ -6,7 +6,6 @@ import plotly.express as px
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import plotly.io as pio
-import kaleido
 import numpy as np
 
 from sklearn.preprocessing import LabelEncoder
