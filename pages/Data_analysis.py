@@ -8,8 +8,6 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import numpy as np
 
-from sklearn.preprocessing import LabelEncoder
-import warnings
 
 # Ne pas afficher les messages de warning
 warnings.filterwarnings('ignore')
@@ -67,9 +65,6 @@ if files:
     df=df.drop(["#", "Network ID", "Start Date (UTC)", "Submit Date (UTC)"], axis = 1)
 else:
     st.warning("Veuillez insérer votre/vos excel")
-
-# le = LabelEncoder()
-# df['AGE_INT'] = le.fit_transform(df['Age'])
 
 
 # Set up sidebar
