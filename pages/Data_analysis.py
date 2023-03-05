@@ -10,7 +10,6 @@ import numpy as np
 
 
 # Ne pas afficher les messages de warning
-warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title="My Streamlit App",layout="wide" )
 
