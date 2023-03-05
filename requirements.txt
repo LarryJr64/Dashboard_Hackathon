@@ -1,0 +1,10 @@
+streamlit
+requests
+Pillow
+streamlit_lottie
+pandas
+matplotlib
+seaborn
+numpy
+plotly
+plotly-express
