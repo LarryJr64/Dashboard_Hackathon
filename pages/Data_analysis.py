@@ -23,7 +23,7 @@ files = st.file_uploader("Choose Excel files", type=["xlsx"], accept_multiple_fi
 if files:
     dfs = []
     for file in files:
-        df2 = pd.read_excel(file, header=1)  # spécifier la ligne de l'en-tête
+        df2 = pd.read_excel(file, header=0)  # spécifier la ligne de l'en-tête
         dfs.append(df2)
     df = pd.concat(dfs, ignore_index=True)
     
